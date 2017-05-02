@@ -1,10 +1,14 @@
 # reviews
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure site that is currently Hello World,
+might be reworked to either an Celcius to Fahrenheit converter
+or a review app.
 
 ## Usage
 
-FIXME
+With Leiningen installed
+cd reviews
+lein run
 
 ## License
 
