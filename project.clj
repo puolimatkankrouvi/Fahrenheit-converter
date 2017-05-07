@@ -6,5 +6,5 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [ring "1.1.8"]
                  [compojure "1.1.5"]
-                 [de.ubercode.clostache/clostache "1.3.1"]]
+                 [hiccup "1.0.5"]]
   :main reviews.core)

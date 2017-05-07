@@ -1,21 +1,24 @@
 (ns reviews.core
   (:use compojure.core)
+  (:use hiccup.core)
   (:require
     [ring.adapter.jetty :as jetty]
     [compojure.route :as route]))
 
-;(defn read-template [template-name]
-  ;(slurp (clojure.java.io/resource
-    ;(str "templates/" template-name ".mustache"))))
 
-;(defn render-template [template-file params]
-   ;(clostache/render (read-template template-file) params))
+(def celcius 20)
 
-;(defn index []
-	;( render-template "index" {:fahrenheit 15}))
+
+(defn fahr [] (
+  str ( + (* celcius 1.8 ) 32 ) ))
+
+(defn index [] (
+  html [:form [ [:input{ :type "text" :value celcius}]  "°C"  [:input {:type "text" :value (fahr)} "°F" ] ] ] ) )
+
+
 
 (defroutes main-router
-  (GET "/" {param :params} "Hello World!" )
+  (GET "/" {param :params} (index) ) 
   (route/resources "/") 
   (route/not-found "404 not found") )
 
