@@ -10,18 +10,20 @@
 (def celcius 20)
 
 
-(defn fahr value (
+(defn fahr [value] (
   str ( + (* value 1.8 ) 32 ) ))
 
 (defn input [fahrenheit] (
-  html [:form {:action "/" :method "post"} [ :input{ :type "text" :value celcius}]  "°C"  [:input {:type "text" :value (fahr)} ] "°F" [:input {:type "submit" :value "Calculate"}  ] ]  ) )
+  html [:form {:action "/result" :method "post"} [ :input{ :type "text" :value celcius}]  "°C"  [:input {:type "submit" :value "Calculate"}  ] ]  ) )
 
-(defn request [parameters]
-  (html [:p "jeps"] ))
+(defn result [celcius]
+  (html [:p (fahr celcius)] "°F" ))
+
+;[:input {:type "text" :value } ] "°F"
 
 (defroutes main-router
   (GET "/" {param :params} (input [] ) ) 
-  (POST "/" [:as request] (str (input :multipart-params)) )
+  (POST "/result" [celcius] (result celcius) )
   (route/resources "/") 
   (route/not-found "404 not found")
   )
