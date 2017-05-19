@@ -1,7 +1,6 @@
-# reviews
+# celcius_converter
 
-A Clojure site that is currently Hello World,
-might be reworked to either an Celcius to Fahrenheit converter
+A Celcius to Fahrenheit converter site that is made with Clojure.
 or a review app.
 
 ## Usage
