@@ -18,9 +18,11 @@
 (defn fahr [value] (
   str ( + (* value 1.8 ) 32 ) ))
 
+;Main page
 (defn input [fahrenheit] (
-  html [:head [:title  "Celcius to Fahrenheit converter" ] (include-css "public/tyyli.css" ) ] [:body [:form {:action "/result/" :method "get"} [ :input{ :type "text" :value celcius}]  "°C"  [:input {:type "submit" :value "Calculate"} ] ] ]  ) )
+  html [:head [:title  "Celcius to Fahrenheit Converter" ] (include-css "/tyyli.css" ) ] [:body [:h1 "Celcius to Fahrenheit Converter" ] [:form {:action "/result/" :method "get"} [:div [ :input{ :class "input_field" :type "text" :value celcius}]  [:p "°C"] ] [:input {:type "submit" :value "Convert" :class "button"} ] ] ]  ) )
 
+;Page that gives the result
 (defn result [celcius]
   (html [:p (fahr celcius)] "°F" ))
 
@@ -32,7 +34,7 @@
 (defroutes main-router
   (GET "/" {param :params} (input [] ) ) 
   ;Celcius null
-  (GET "/result/" [params]
+  (GET "/result/" {params :params}
         (result (parse-int (get params "celcius")))
   )
   (route/resources "/") 
