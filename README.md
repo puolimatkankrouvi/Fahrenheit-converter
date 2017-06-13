@@ -1,7 +1,6 @@
 # celcius_converter
 
 A Celcius to Fahrenheit converter site that is made with Clojure.
-or a review app.
 
 ## Usage
 
